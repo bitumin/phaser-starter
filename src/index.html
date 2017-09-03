@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>hello phaser!</title>
+    <script src="node_modules/phaser-ce/build/phaser.min.js"></script>
+    <style>
+        #screen {
+            height: 430px;
+        }
+
+        canvas {
+            image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED */
+            image-rendering: -moz-crisp-edges; /* Firefox */
+            image-rendering: -o-crisp-edges; /* Opera */
+            image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+            image-rendering: pixelated; /* Chrome */
+            image-rendering: optimize-contrast; /* CSS3 Proposed */
+            -ms-interpolation-mode: nearest-neighbor; /* IE8+ */
+            /*transform: scale(2);*/
+        }
+    </style>
+</head>
+<body>
+<div id="screen"></div>
+<script type="text/javascript">
+    window.onload = function () {
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, 'screen', {preload: preload, create: create});
+
+        function preload() {
+            game.load.image('logo', './media/phaser.png');
+        }
+
+        function create() {
+            var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
+            logo.anchor.setTo(0.5, 0.5);
+        }
+    };
+</script>
+</body>
+</html>
